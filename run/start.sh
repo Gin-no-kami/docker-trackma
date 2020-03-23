@@ -6,6 +6,6 @@ if [ ! -e /root/.trackma ]; then
 fi
 
 # configure account and settings
-python config.py
+#python config.py
 
 exec python /usr/local/bin/trackma
