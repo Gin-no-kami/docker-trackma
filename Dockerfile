@@ -1,6 +1,6 @@
 FROM python:3.6-alpine
 
-LABEL maintainer frosty5689 <frosty5689@gmail.com>
+LABEL maintainer Gin-no-kami <frosty5689@gmail.com>
 
 RUN apk add --no-cache --update \
     ca-certificates \
@@ -9,7 +9,7 @@ RUN apk add --no-cache --update \
  && pip install --upgrade --no-cache-dir setuptools pyinotify envparse \
  && rm -rf /root/.cache
 
-ARG TRACKMA_VERSION=master
+ARG TRACKMA_VERSION=v0.8.2
 
 RUN apk add --no-cache --update --virtual build-dependencies wget unzip && \
     wget -O /tmp/trackma-$TRACKMA_VERSION.zip https://github.com/z411/trackma/archive/$TRACKMA_VERSION.zip && \
@@ -18,7 +18,7 @@ RUN apk add --no-cache --update --virtual build-dependencies wget unzip && \
     unzip /tmp/trackma-$TRACKMA_VERSION.zip -d /opt && \
     mv /opt/trackma* /opt/trackma &&\
     cd /opt/trackma && \
-    python setup.py develop && \
+    python setup.py install && \
     rm -rf /tmp/trackma-$TRACKMA_VERSION.zip && \
     apk del build-dependencies
 
