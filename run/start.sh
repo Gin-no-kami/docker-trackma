@@ -8,4 +8,4 @@ fi
 # configure account and settings
 #python config.py
 
-exec python /usr/local/bin/trackma
+trackma
