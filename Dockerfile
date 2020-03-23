@@ -1,4 +1,4 @@
-FROM python:3.6-alpine
+FROM python:3.5-alpine
 
 LABEL maintainer Gin-no-kami <frosty5689@gmail.com>
 
