@@ -11,14 +11,14 @@ RUN apk add --no-cache --update \
 
 ARG TRACKMA_VERSION=v0.8.2
 
-RUN apk add --no-cache --update --virtual build-dependencies wget unzip && \
+RUN apk add --no-cache --update --virtual build-dependencies wget unzip screen && \
     wget -O /tmp/trackma-$TRACKMA_VERSION.zip https://github.com/z411/trackma/archive/$TRACKMA_VERSION.zip && \
     ls -l /tmp && \
     mkdir -p /opt && \
     unzip /tmp/trackma-$TRACKMA_VERSION.zip -d /opt && \
     mv /opt/trackma* /opt/trackma &&\
     cd /opt/trackma && \
-    sudo python3 setup.py install && \
+    python3 setup.py install && \
     rm -rf /tmp/trackma-$TRACKMA_VERSION.zip && \
     apk del build-dependencies
 
