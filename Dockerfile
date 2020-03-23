@@ -11,7 +11,7 @@ RUN apk add --no-cache --update \
 
 ARG TRACKMA_VERSION=v0.8.2
 
-RUN apk add screen
+RUN apk add --no-cache screen bash
 
 RUN apk add --no-cache --update --virtual build-dependencies wget unzip && \
     wget -O /tmp/trackma-$TRACKMA_VERSION.zip https://github.com/z411/trackma/archive/$TRACKMA_VERSION.zip && \
