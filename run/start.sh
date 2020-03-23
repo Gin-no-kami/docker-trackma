@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # symlink config
 if [ ! -e /root/.trackma ]; then
