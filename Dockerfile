@@ -18,7 +18,7 @@ RUN apk add --no-cache --update --virtual build-dependencies wget unzip && \
     unzip /tmp/trackma-$TRACKMA_VERSION.zip -d /opt && \
     mv /opt/trackma* /opt/trackma &&\
     cd /opt/trackma && \
-    python setup.py install && \
+    sudo python3 setup.py install && \
     rm -rf /tmp/trackma-$TRACKMA_VERSION.zip && \
     apk del build-dependencies
 
