@@ -1,8 +1,8 @@
-FROM python:3.5-alpine
+FROM python:3.5-buster
 
 LABEL maintainer Gin-no-kami <frosty5689@gmail.com>
 
-RUN apk add --no-cache --update \
+RUN apt-get install --no-cache --update \
     ca-certificates \
     tzdata \
  && update-ca-certificates \
@@ -11,9 +11,9 @@ RUN apk add --no-cache --update \
 
 ARG TRACKMA_VERSION=v0.8.2
 
-RUN apk add --no-cache screen bash
+RUN apt-get install --no-cache bash
 
-RUN apk add --no-cache --update --virtual build-dependencies wget unzip && \
+RUN apt-get install --no-cache --update --virtual build-dependencies wget unzip && \
     wget -O /tmp/trackma-$TRACKMA_VERSION.zip https://github.com/z411/trackma/archive/$TRACKMA_VERSION.zip && \
     ls -l /tmp && \
     mkdir -p /opt && \
@@ -22,7 +22,7 @@ RUN apk add --no-cache --update --virtual build-dependencies wget unzip && \
     cd /opt/trackma && \
     python3 setup.py install && \
     rm -rf /tmp/trackma-$TRACKMA_VERSION.zip && \
-    apk del build-dependencies
+    apt-get remove build-dependencies
 
 ADD run/* /opt/trackma/
 
