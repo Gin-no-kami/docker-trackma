@@ -9,7 +9,7 @@ RUN apk add --no-cache --update \
  && pip install --upgrade --no-cache-dir setuptools pyinotify envparse \
  && rm -rf /root/.cache
 
-ARG TRACKMA_VERSION=v0.7.6
+ARG TRACKMA_VERSION=v0.8.2
 
 RUN apk add --no-cache screen bash
 
