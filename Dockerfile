@@ -6,21 +6,11 @@ RUN apt-get update \
  && apt-get install -y ca-certificates tzdata \
  && update-ca-certificates \
  && pip install --upgrade --no-cache-dir setuptools pyinotify envparse \
+ && pip3 install Trackma
  && rm -rf /root/.cache
 
-ARG TRACKMA_VERSION=v0.8.2
-
-RUN apt-get update && apt-get install -y bash
-
-RUN apt-get update && apt-get install -y wget unzip && \
-    wget -O /tmp/trackma-$TRACKMA_VERSION.zip https://github.com/z411/trackma/archive/$TRACKMA_VERSION.zip && \
-    ls -l /tmp && \
-    mkdir -p /opt && \
-    unzip /tmp/trackma-$TRACKMA_VERSION.zip -d /opt && \
-    mv /opt/trackma* /opt/trackma &&\
-    cd /opt/trackma && \
-    python3 setup.py install && \
-    rm -rf /tmp/trackma-$TRACKMA_VERSION.zip
+RUN mkdir -p /opt/trackma && \
+    cd /opt/trackma
 
 ADD run/* /opt/trackma/
 
