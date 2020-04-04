@@ -32,4 +32,4 @@ RUN ln -s /config /root/.trackma
 
 WORKDIR /opt/trackma
 
-CMD ["python", "trackma"]
+CMD ["trackma"]
