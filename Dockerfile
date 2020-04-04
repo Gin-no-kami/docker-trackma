@@ -6,7 +6,7 @@ RUN apt-get update \
  && apt-get install -y ca-certificates tzdata \
  && update-ca-certificates \
  && pip install --upgrade --no-cache-dir setuptools pyinotify envparse \
- && pip3 install Trackma
+ && pip3 install Trackma \
  && rm -rf /root/.cache
 
 RUN mkdir -p /opt/trackma && \
