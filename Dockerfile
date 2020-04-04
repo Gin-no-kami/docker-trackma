@@ -28,6 +28,8 @@ ADD run/* /opt/trackma/
 
 VOLUME /config
 
+RUN ln -s /config /root/.trackma
+
 WORKDIR /opt/trackma
 
-CMD ["/opt/trackma/start.sh"]
+CMD ["python", "trackma"]
