@@ -2,18 +2,17 @@ FROM python:3.5-buster
 
 LABEL maintainer Gin-no-kami <frosty5689@gmail.com>
 
-RUN apt-get install --no-cache --update \
-    ca-certificates \
-    tzdata \
+RUN apt-get update \
+ && apt-get install -y ca-certificates tzdata \
  && update-ca-certificates \
  && pip install --upgrade --no-cache-dir setuptools pyinotify envparse \
  && rm -rf /root/.cache
 
 ARG TRACKMA_VERSION=v0.8.2
 
-RUN apt-get install --no-cache bash
+RUN apt-get update && apt-get install -y bash
 
-RUN apt-get install --no-cache --update --virtual build-dependencies wget unzip && \
+RUN apt-get update && apt-get install -y build-dependencies wget unzip && \
     wget -O /tmp/trackma-$TRACKMA_VERSION.zip https://github.com/z411/trackma/archive/$TRACKMA_VERSION.zip && \
     ls -l /tmp && \
     mkdir -p /opt && \
